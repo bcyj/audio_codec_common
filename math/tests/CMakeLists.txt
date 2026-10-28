@@ -1,0 +1,17 @@
+foreach(name integer float_rounding float_scaling float_remainder float_sqrt double_sqrt fma
+             math_backend math_host fft_sse)
+  set(sources ${name}_test.c)
+  if(name STREQUAL "math_backend" OR name STREQUAL "math_host" OR name STREQUAL "trig_host")
+    list(APPEND sources ${name}_reference.c)
+  endif()
+  add_executable(audio_math_${name}_test ${sources})
+  target_link_libraries(audio_math_${name}_test PRIVATE audio_math::math)
+  target_compile_features(audio_math_${name}_test PRIVATE c_std_11)
+  if(MSVC)
+    target_compile_options(audio_math_${name}_test PRIVATE /fp:strict /utf-8 /Z7
+      $<$<EQUAL:${CMAKE_SIZEOF_VOID_P},4>:/arch:SSE2>)
+  else()
+    target_compile_options(audio_math_${name}_test PRIVATE -ffp-contract=off -fno-fast-math)
+  endif()
+  add_test(NAME audio_math_${name} COMMAND audio_math_${name}_test)
+endforeach()

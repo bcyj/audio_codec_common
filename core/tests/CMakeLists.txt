@@ -1,0 +1,13 @@
+add_executable(audio_common_ring_buffer_test ring_buffer_test.c)
+target_link_libraries(audio_common_ring_buffer_test PRIVATE audio_common::core)
+if(MSVC)
+  target_compile_options(audio_common_ring_buffer_test PRIVATE /utf-8)
+endif()
+add_test(NAME audio_common_ring_buffer COMMAND audio_common_ring_buffer_test)
+
+add_executable(audio_common_memory_test memory_test.c)
+target_link_libraries(audio_common_memory_test PRIVATE audio_common::core)
+if(MSVC)
+  target_compile_options(audio_common_memory_test PRIVATE /utf-8)
+endif()
+add_test(NAME audio_common_memory COMMAND audio_common_memory_test)

@@ -1,0 +1,21 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<ItemGroup Label="ProjectConfigurations"><ProjectConfiguration Include="Debug|Win32"><Configuration>Debug</Configuration><Platform>Win32</Platform></ProjectConfiguration><ProjectConfiguration Include="Release|Win32"><Configuration>Release</Configuration><Platform>Win32</Platform></ProjectConfiguration><ProjectConfiguration Include="Debug|x64"><Configuration>Debug</Configuration><Platform>x64</Platform></ProjectConfiguration><ProjectConfiguration Include="Release|x64"><Configuration>Release</Configuration><Platform>x64</Platform></ProjectConfiguration></ItemGroup>
+<PropertyGroup Label="Globals"><ProjectGuid>{FDD2FD01-4069-49C2-A55D-100000000001}</ProjectGuid><WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion></PropertyGroup>
+<Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props"/>
+<PropertyGroup Label="Configuration"><ConfigurationType>StaticLibrary</ConfigurationType><PlatformToolset>v142</PlatformToolset></PropertyGroup>
+<Import Project="$(VCTargetsPath)\Microsoft.Cpp.props"/>
+<PropertyGroup><TargetName>audio_math</TargetName>
+<AudioMathFftIterativeStatic Condition="'$(AudioMathFftIterativeStatic)'=='' and '$(LhdcDriverResources)'=='1'">1</AudioMathFftIterativeStatic>
+<AudioMathFftIterativeStatic Condition="'$(AudioMathFftIterativeStatic)'=='' and '$(LhdcKissFftIterativeStatic)'!=''">$(LhdcKissFftIterativeStatic)</AudioMathFftIterativeStatic>
+<AudioMathFftIterativeStatic Condition="'$(AudioMathFftIterativeStatic)'==''">0</AudioMathFftIterativeStatic>
+<AudioMathOutputRoot Condition="'$(AudioMathOutputRoot)'=='' and '$(LhdcOutputRoot)'!=''">$(LhdcOutputRoot)</AudioMathOutputRoot>
+<AudioMathOutputRoot Condition="'$(AudioMathOutputRoot)'==''">$(MSBuildThisFileDirectory)..\..\..\build\windows</AudioMathOutputRoot>
+<OutDir>$(AudioMathOutputRoot)\$(Platform)\$(Configuration)\</OutDir>
+<IntDir>$(OutDir)obj\audio_math\</IntDir></PropertyGroup>
+<ItemDefinitionGroup><ClCompile><AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)..\..\include</AdditionalIncludeDirectories>
+<PreprocessorDefinitions>AUDIO_MATH_FFT_ITERATIVE_STATIC=$(AudioMathFftIterativeStatic);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+<Optimization>MaxSpeed</Optimization><RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary><FloatingPointModel>Strict</FloatingPointModel>
+<AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions><LanguageStandard_C>stdc11</LanguageStandard_C>
+<EnableEnhancedInstructionSet Condition="'$(Platform)'=='Win32'">StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+</ClCompile></ItemDefinitionGroup><ItemGroup><ClCompile Include="..\..\src\fma_soft.c" /><ClCompile Include="..\..\src\float_exp.c" /><ClCompile Include="..\..\src\float_sine.c" /><ClCompile Include="..\..\src\fft_float32.c" /><ClCompile Include="..\..\src\fft_float32_tables.c" /><ClCompile Include="crt_math.c" /><ClCompile Include="float_math.c" /><ClCompile Include="math_tables.c" /></ItemGroup>
+<Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/></Project>

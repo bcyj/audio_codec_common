@@ -1,0 +1,86 @@
+# Build directories and outputs
+/build/
+build*/
+/out/
+/bin/
+/dist/
+obj/
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CTestTestfile.cmake
+Testing/
+compile_commands.json
+
+# Visual Studio / MSBuild
+.vs/
+*.user
+*.suo
+*.userosv
+*.sln.docstates
+*.vcxproj.user
+Debug/
+Release/
+x64/
+Win32/
+/ARM/
+/ARM64/
+*.ipch
+*.aps
+
+# Compiled binaries and object files
+*.obj
+*.o
+*.lib
+*.a
+*.dll
+*.so
+*.dylib
+*.exe
+*.pdb
+*.idb
+*.ilk
+*.exp
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# Android NDK
+.cxx/
+local.properties
+
+# IDE & Editor files
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+*.swp
+*~
+*.bak
+*.orig
+*.rej
+
+# Logs and runtime dumps
+*.log
+*.tlog
+*.dmp
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
